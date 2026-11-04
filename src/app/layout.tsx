@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import QueryProvider from "@/components/providers/query-provider";
+import Sidebar from "@/components/sidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,7 +25,18 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col bg-slate-50 text-slate-900">
+        <QueryProvider>
+          <div className="flex flex-col lg:flex-row min-h-screen w-full">
+            <Sidebar />
+
+            {/* Main content fleksibel mengisi sisa layar */}
+            <main className="flex-1 overflow-x-hidden w-full p-4 md:p-6 lg:p-8">
+              {children}
+            </main>
+          </div>
+        </QueryProvider>
+      </body>
     </html>
   );
 }

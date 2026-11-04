@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 Modern POS (Point of Sale) System
 
-## Getting Started
+Sistem Kasir / Point of Sale (POS) modern, cepat, dan real-time yang dibangun menggunakan teknologi web stack terkini. Dirancang untuk memudahkan manajemen transaksi toko, inventaris produk, serta laporan penjualan harian.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🛠️ Tech Stack
+
+Aplikasi ini dibangun menggunakan arsitektur modern demi performa dan *type-safety* yang maksimal:
+
+* **Framework:** [Next.js](https://nextjs.org/) (App Router / React)
+* **Language:** [TypeScript](https://www.typescriptlang.org/)
+* **Database & ORM:** [PostgreSQL](https://www.postgresql.org/) & [Prisma ORM](https://www.prisma.io/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Icons:** [Lucide React](https://lucide.dev/)
+* **State Management / Forms:** React Hooks & Zod (untuk validasi data)
+
+---
+
+## ✨ Fitur Utama
+
+* **Point of Sale (POS) Interface:** Antarmuka kasir cepat berbasis web, mendukung *barcode scanning* dan navigasi yang intuitif.
+* **Manajemen Produk & Kategori:** Pengaturan produk, harga, dan ketersediaan stok secara *real-time*.
+* **Manajemen Inventaris:** Otomatis mengurangi stok gudang setiap kali transaksi berhasil diproses.
+* **Manajemen Transaksi & Riwayat:** Pencatatan struk, metode pembayaran, dan riwayat pesanan.
+* **Responsive Design:** Dapat diakses dengan mulus melalui komputer kasir (desktop) maupun perangkat tablet/mobile.
+
+---
+
+## 📂 Struktur Proyek
+
+```text
+├── prisma/               # Skema database & migrasi Prisma
+├── public/               # Aset statis (gambar, ikon, dll)
+├── src/
+│   ├── app/              # Halaman & API Routes (Next.js App Router)
+│   ├── components/       # Komponen UI reusable (Modals, Buttons, dll)
+│   ├── lib/              # Konfigurasi instance Prisma & utility helpers
+│   └── types/            # Definisi tipe data TypeScript
+├── .env                  # Konfigurasi Environment Variables
+├── package.json          # Daftardependencies proyek
+└── tsconfig.json         # Konfigurasi TypeScript
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ⚙️ Cara Memulai (Installation & Setup)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ikuti langkah-langkah di bawah ini untuk menjalankan proyek secara lokal di komputer Anda:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### 1. Clone Repositori
+```bash
+git clone https://github.com/AndyWidianto/cashier_system.git
+cd nama-repo-anda
+```
 
-## Learn More
+### 2. Install Dependencies
 
-To learn more about Next.js, take a look at the following resources:
+Pastikan Anda sudah menginstal Node.js di komputer Anda.
+```bash
+npm install
+# atau
+yarn install
+# atau
+pnpm install
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 3. Konfigurasi Environment Variables
+Buat file .env di root direktori proyek Anda, lalu sesuaikan dengan konfigurasi database PostgreSQL Anda:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+DATABASE_URL="postgresql://user:password@localhost:5432/nama_database?schema=public"
+```
 
-## Deploy on Vercel
+### 4. Jalankan Migrasi Database (Prisma)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Sinkronkan skema database dengan Prisma:
+```bash
+npx prisma migrate dev --name init
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+(Opsional) Jika ingin mengisi data awal (seed), jalankan:
+```bash
+npm run seed
+```
+
+### 5. Jalankan Development Server
+```bash
+npm run dev
+# atau
+yarn dev
+# atau
+pnpm dev
+```
+
+Buka http://localhost:3000 melalui browser kesayangan Anda untuk melihat aplikasinya.
+
+
+## 📝 Lisensi
+
+Proyek ini bersifat open-source dan didistribusikan di bawah lisensi MIT. Silakan gunakan dan kembangkan sesuai kebutuhan Anda!
